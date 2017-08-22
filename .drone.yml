@@ -1,0 +1,18 @@
+pipeline:
+  copy:
+    image: appleboy/drone-scp
+    host: eth.minerpool.co
+    username: ubuntu
+    key: ${SSH_KEY}
+    secrets: [ SSH_KEY ]
+    target: /mnt/open-ethereum-pool-master/www
+    source: .
+
+  build:
+    image: appleboy/drone-ssh
+    host: eth.minerpool.co
+    username: ubuntu
+    key: ${SSH_KEY}
+    secrets: [ SSH_KEY ]
+    script:
+      - rm -rf /mnt/open-ethereum-pool-master/www/.git && cd /mnt/open-ethereum-pool-master/www/ && ./build.sh
