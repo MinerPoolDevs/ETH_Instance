@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="page-header">
+    <h1>How To Mine</h1>
+  </div>
+  <div class="page-header">
+  <p>
+    <h2>Mining with Claymore</h2>
+    <code>
+        SET GPU_FORCE_64BIT_PTR 0<br>
+        SET GPU_MAX_HEAP_SIZE 100<br> 
+        SET GPU_USE_SYNC_OBJECTS 1<br>
+        SET GPU_MAX_ALLOC_PERCENT 100<br>
+        SET GPU_SINGLE_ALLOC_PERCENT 100<br>
+        ./ethdcrminer64 -epool eth.minerpool.co:8008 -ewal YOUR_ADDRESS -epsw x -eworker RIG_ID -esm 0 -tt 72 -ttli 78 -tstop 85<br>
+    </code>
+  </p>
+  </div>
+  <div class="page-header">
+   <h2>Mining with Ethminer</h2>
+   <code>{{config.HttpHost}}:{{config.HttpPort}}/YOUR_ETH_ADDRESS/RIG_ID</code>
+  <dl class="dl-horizontal">
+    <dt>YOUR_ETH_ADDRESS</dt>
+    <dd>This is your address for payouts, generate one with geth, or mine directly to exchange like
+      <a href="http://poloniex.com" rel="nofollow" target="_blank">Poloniex</a>
+      or <a href="http://bittrex.com" rel="nofollow" target="_blank">Bittrex</a>.<br/>
+      <strong>Example:</strong> <code>0xb85150eb365e7df0941f0cf08235f987ba91506a</code>.
+    </dd>
+    <dt>RIG_ID</dt>
+    <dd>
+      ID of your farm to distinguish it from your other rig. If you have just one rig, feel free to omit this param.
+      This param must be short alphanumeric string with optional dashes and underscores.<br/>
+      <strong>Example:</strong> <code>rig-1</code>
+    </dd>
+  </dl>
+ <p>
+    <strong>Full example:</strong>
+    <code>ethminer -F {{config.HttpHost}}:{{config.HttpPort}}/0xb85150eb365e7df0941f0cf08235f987ba91506a/myfarm -G --farm-recheck 200</code>.<br/>
+    <span class="label label-info">Hint:</span> If you are compiling ethminer from latest source, please also use
+      extra <code>--disable-submit-hashrate</code> option.
+  </p>
+  </div>
+  
+  <div class="page-header">
+  <h2>Stratum Mining with Stratum Proxy for Ethereum</h2>
+  Grab proxy from <a href="https://github.com/Atrides/eth-proxy" re="nofollow" target="_blank">eth-proxy GitHub repo</a>.
+  Edit <code>eth-proxy.conf</code> and specify our pool's <code>HOST: {{config.StratumHost}}</code>, <code>PORT: {{config.StratumPort}}</code> and your <code>WALLET</code>.
+  </div>
+
+  <div class="page-header">
+  <h2>Mining with Ether-Proxy</h2>
+  Use stable release of <a href="https://github.com/sammy007/ether-proxy/releases" target="_blank">Ethereum Solo/Pool Mining Proxy</a>.
+  </div>
+
+  <h4>Advice</h4>
+  <p>CPU mining is not recommended.</p>
+  <h4>Terms of Service</h4>
+  <p>By using the pool you accept all possible risks related to experimental software usage.<br/>
+     Pool owner can't compensate any irreversible losses, but will do his best to prevent worst case.
+  </p>
+</div>
