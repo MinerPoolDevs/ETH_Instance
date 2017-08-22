@@ -14,5 +14,6 @@ pipeline:
     username: ubuntu
     key: ${SSH_KEY}
     secrets: [ SSH_KEY ]
+    command_timeout: 600
     script:
       - rm -rf /mnt/open-ethereum-pool-master/www/.git && cd /mnt/open-ethereum-pool-master/www/ && ./build.sh
